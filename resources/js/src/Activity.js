@@ -23,7 +23,7 @@ export default class Activity {
     playerMeetsRequirements(player) {
         for (let index in this.requirements) {
             let requirement = this.requirements[index];
-            switch (this.requirement.type) {
+            switch (requirement.type) {
                 case "skill":
                     let skill = player.getSkill(requirement.identifier);
                     if (skill.getLevel() < requirement.level) {

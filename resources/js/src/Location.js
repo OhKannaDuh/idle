@@ -12,8 +12,8 @@ export default class Location {
         return this.activities;
     }
 
-    tick() {
-        this.verifyAvailableActivities();
+    tick(player) {
+        this.verifyAvailableActivities(player);
     }
 
     verifyAvailableActivities(player) {

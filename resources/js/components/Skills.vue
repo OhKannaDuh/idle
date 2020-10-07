@@ -5,10 +5,10 @@
                 <v-card :id="skill.getId(identifier)" class="skill" tile flat>
                     <v-card-text>
                         <v-row no-gutters>
-                            <v-col class="flex-grow-1">
+                            <v-col class="flex-grow-0">
                                 <i class="ra ra-fw" :class="skill.getIcon()"></i>
                             </v-col>
-                            <v-col class="flex-grow-1">
+                            <v-col class="flex-grow-1 text-right">
                                 <span> {{ skill.getLevel() }} / 99</span>
                             </v-col>
                         </v-row>

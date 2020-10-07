@@ -12,11 +12,16 @@ export default class WoodcuttingActivity extends Activity {
                 return;
             }
 
-            logger.red("Nothing gained");
+            logger.red(`Nothing gained (chance ${chance + bonus}%)`);
         }, level === 1);
 
         this.experience = experience;
         this.item = item;
+        this.requirements.push({
+            type: "skill",
+            identifier: "woodcutting",
+            level: level,
+        });
     }
 
 };

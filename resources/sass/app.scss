@@ -7,6 +7,10 @@
 @import "variables";
 @import "~tippy.js/dist/tippy.css";
 
+body {
+    overflow: hidden;
+}
+
 .v-application {
     @import "generic";
     @import "drawer";
