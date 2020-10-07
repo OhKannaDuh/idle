@@ -1,0 +1,101 @@
+import Vue from 'vue'
+
+// Load Vuetify with some standard components
+import Vuetify, {
+    VApp,
+    VAppBar,
+    VAppBarNavIcon,
+    VBtn,
+    VCard,
+    VCardActions,
+    VCardText,
+    VCardTitle,
+    VCol,
+    VContainer,
+    VMain,
+    VFooter,
+    VIcon,
+    VLayout,
+    VNavigationDrawer,
+    VRow,
+    VToolbarTitle,
+    VToolbarItems,
+    VSpacer,
+    VListItem,
+    VList,
+    VListItemIcon,
+    VListItemContent,
+    VListItemTitle,
+    VTextField,
+    VForm,
+    VSelect,
+    VProgressLinear,
+    VListItemAction,
+    VTabs,
+    VTab,
+    VTabsItems,
+    VTabItem,
+    VSwitch,
+    VSimpleTable,
+    VToolbar,
+    VDataTable,
+    VDialog,
+    VDatePicker,
+    VTimePicker,
+    VAvatar,
+} from 'vuetify/lib'
+
+Vue.use(Vuetify, {
+    components: {
+        VApp,
+        VAppBar,
+        VAppBarNavIcon,
+        VBtn,
+        VCard,
+        VCardActions,
+        VCardText,
+        VCardTitle,
+        VCol,
+        VContainer,
+        VMain,
+        VFooter,
+        VIcon,
+        VLayout,
+        VNavigationDrawer,
+        VRow,
+        VToolbarTitle,
+        VToolbarItems,
+        VSpacer,
+        VListItem,
+        VList,
+        VListItemIcon,
+        VListItemContent,
+        VListItemTitle,
+        VTextField,
+        VForm,
+        VSelect,
+        VProgressLinear,
+        VListItemAction,
+        VTabs,
+        VTab,
+        VTabsItems,
+        VTabItem,
+        VSwitch,
+        VSimpleTable,
+        VToolbar,
+        VDataTable,
+        VDialog,
+        VDatePicker,
+        VTimePicker,
+        VAvatar,
+    }
+});
+
+
+// Use theme defined in file
+import theme from "../theme";
+const opts = {
+  theme: theme
+}
+
+export default new Vuetify(opts)

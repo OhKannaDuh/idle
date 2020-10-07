@@ -1,0 +1,8 @@
+User
+    - Has Many [Character]
+
+Character
+    - Has Many [Party]
+
+Party
+    - Has Many [Character]

@@ -1,0 +1,11 @@
+.progress {
+    height: 25px;
+    background: #C0C0C0;
+    background: linear-gradient(to bottom, #C0C0C0 0%, #B1B1B1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #C0C0C0), color-stop(100%, #B1B1B1));
+    background: -webkit-linear-gradient(top, #C0C0C0 0%, #B1B1B1 100%);
+    background: -moz-linear-gradient(top, #C0C0C0 0%, #B1B1B1 100%);
+    background: -o-linear-gradient(top, #C0C0C0 0%, #B1B1B1 100%);
+    background: -ms-linear-gradient(top, #C0C0C0 0%, #B1B1B1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#C0C0C0', endColorstr='#B1B1B1', GradientType=0);
+}

@@ -1,0 +1,14 @@
+.location {
+    fill: silver;
+    cursor: pointer;
+
+    &:hover, &.active {
+        fill: white;
+    }
+
+    &.locked {
+        // display: none;
+        fill: #4d4d4d;
+        cursor: default;
+    }
+}

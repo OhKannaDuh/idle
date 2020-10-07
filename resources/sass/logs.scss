@@ -1,0 +1,29 @@
+#log-pane {
+    height: 250px;
+    max-height: 250px;
+    min-height: 250px;
+
+    overflow-y: scroll;
+
+    .log {
+        font-size: small;
+        padding: 0;
+        margin: 0;
+
+        &.log-white {
+            color: white;
+        }
+
+        &.log-red {
+            color: red;
+        }
+
+        &.log-gold {
+            color: gold;
+        }
+
+        &.log-blue {
+            color: dodgerblue;
+        }
+    }
+}
