@@ -1,5 +1,5 @@
 export default class Loop {
-    constructor(ticksPerSecond = 60) {
+    constructor(ticksPerSecond = 24) {
         this.ticksPerSecond = ticksPerSecond;
         this.interval = null;
         this.reset();

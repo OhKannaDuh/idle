@@ -15,9 +15,6 @@
 export default {
     props: {
         navigation: Object,
-    },
-
-    methods: {
     }
 }
 </script>

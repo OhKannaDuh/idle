@@ -36,4 +36,13 @@ export default class Player {
     addItem(item) {
         this.inventory.addItem(item);
     }
+
+    getTotalXp() {
+        let xp = 0;
+        for (let index in this.skills) {
+            xp += this.skills[index].xp;
+        }
+
+        return xp;
+    }
 };

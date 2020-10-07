@@ -6,6 +6,7 @@
                 <v-toolbar flat color="#111e26">
                     <v-app-bar-nav-icon @click.stop="navigation.show = !navigation.show"></v-app-bar-nav-icon>
                     <v-spacer></v-spacer>
+                    <span>Total Xp: {{ player.getTotalXp() }}</span>
                 </v-toolbar>
             </v-card>
             <v-card flat tile class="flex-grow-1" color="#2B3840" >
@@ -87,7 +88,7 @@ export default {
             },
             // Classes
             logger: new Logger(),
-            loop: new Loop(60),
+            loop: new Loop(),
             player: new Player(),
         }
     },

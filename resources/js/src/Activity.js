@@ -1,7 +1,7 @@
 export default class Activity {
     constructor(text, ticks, action, enabled=false) {
         this.text = text;
-        this.ticks = ticks * 0.6 * 60;
+        this.ticks = ticks * 0.6 * 24;
         this.action = action;
         this.disabled = !enabled;
 
