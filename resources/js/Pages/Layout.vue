@@ -9,9 +9,12 @@
 </template>
 
 <script>
+import tippy from 'tippy.js';
 export default {
     mounted() {
-        $($(".v-application--wrap")[0]).height(window.innerHeight);
+        $($(".v-app lication--wrap")[0]).height(window.innerHeight);
+
+        tippy("[data-tippy-content]");
     }
 }
 </script>

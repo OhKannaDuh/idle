@@ -19,33 +19,53 @@
                 </v-container>
             </v-card>
             <v-card flat tile min-height="250px" max-height="250px" color="#1E2B33">
-                <log :logs="logs"></log>
+                <v-container ma-0 pa-0 fluid>
+                    <v-row no-gutters>
+                        <v-col cols="6">
+                            <log :logs="logs"></log>
+                        </v-col>
+                        <v-col cols="6">
+                            <v-container ma-0 pa-0 fluid fill-height>
+                                <v-row no-gutters class="fill-height">
+                                    <v-col class="flex-grow-0 d-flex" style="flex-direction:column">
+                                        <v-btn tile depressed block class="flex-grow-1" data-tippy-content="Shop">
+                                            <v-icon>mdi-purse</v-icon>
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col class="flex-grow-1 pa-2">
+                                        :D
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-col>
+                    </v-row>
+                </v-container>
             </v-card>
         </v-col>
         <v-col cols="3" class="d-flex" style="flex-direction:column">
-            <v-card flat tile class="flex-grow-1" color="#1E2B33">
+            <v-card flat tile class="flex-grow-1" color="#1E2B33" height="100%">
                 <v-card-actions>
-                    <v-select v-model="activity" :items="locations[this.location].getActivities()" @change="updateAction" return-object></v-select>
+                    <v-select label="Action" v-model="activity" :items="locations[this.location].getActivities()" @change="updateAction" return-object></v-select>
                 </v-card-actions>
             </v-card>
             <v-card flat tile class="flex-grow-0" color="#1E2B33" style="border-top: 1px solid silver">
                 <progress-bar :max="activity ? activity.ticks : 0" :value="loop.getTick()"></progress-bar>
             </v-card>
-            <v-card flat tile class="flex-grow-0" color="#37444C">
+            <v-card flat tile class="flex-grow-1" color="#37444C" height="100%" style="overflow-y: scroll">
                 <v-container fluid ma-0 pa-0>
                     <v-row no-gutters>
                         <v-col>
-                            <v-btn id="skills-button" block tile depressed @click="tab = 'skills'">
+                            <v-btn block tile depressed @click="tab = 'skills'" data-tippy-content="Skills">
                                 <v-icon>mdi-poll</v-icon>
                             </v-btn>
                         </v-col>
                         <v-col>
-                            <v-btn id="inventory-button" block tile depressed @click="tab = 'inventory'">
+                            <v-btn block tile depressed @click="tab = 'inventory'" data-tippy-content="Inventory">
                                 <v-icon>mdi-bag-checked</v-icon>
                             </v-btn>
                         </v-col>
                         <v-col>
-                            <v-btn id="toolbelt-button" block tile depressed @click="tab = 'toolbelt'">
+                            <v-btn block tile depressed @click="tab = 'toolbelt'" data-tippy-content="Toolbelt">
                                 <v-icon>mdi-toolbox</v-icon>
                             </v-btn>
                         </v-col>
@@ -98,22 +118,9 @@ export default {
         },
         tick() {
             this.loop.tick(this.activity, this.locations[this.location], this.player, this.logger)
-        },
-        getMainDisplayAreaHeight() {
-            console.log(window.innerHeight);
-            return window.innerHeight - 250 - 64;
         }
     },
     mounted() {
-        for (let identifier in this.player.getSkills()) {
-            let skill = this.player.getSkill(identifier);
-            tippy(`#${skill.getId(identifier)}`, {content: skill.getName()});
-        }
-
-        tippy("#skills-button", {content: "Skills"});
-        tippy("#inventory-button", {content: "Inventory"});
-        tippy("#toolbelt-button", {content: "Toolbelt"});
-
         this.loop.start(this);
     }
 }

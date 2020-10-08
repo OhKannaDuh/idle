@@ -2,7 +2,7 @@
     <v-container fluid ma-0 :class="{hidden: !visible}">
         <v-row dense>
             <v-col cols="3" v-for="(skill,identifier) in player.getSkills()" :key="identifier">
-                <v-card :id="skill.getId(identifier)" class="skill" tile flat>
+                <v-card class="skill" tile flat :data-tippy-content="skill.getName()">
                     <v-card-text>
                         <v-row no-gutters>
                             <v-col class="flex-grow-0">
