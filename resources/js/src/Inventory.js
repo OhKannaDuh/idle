@@ -4,8 +4,17 @@ export default class Inventory {
     constructor() {
         this.items = [];
         this.limit = 28;
+        this.floor = null;
 
         this.logger = new Logger();
+    }
+
+    clear() {
+        this.items = [];
+    }
+
+    setFloor(floor) {
+        this.floor = floor;
     }
 
     getItems() {
@@ -37,6 +46,7 @@ export default class Inventory {
 
     addItem(item, quantity = 1, log = true) {
         if (this.isFull()) {
+            this.floor.addItem(item, quantity);
             return;
         }
         if (item.canStack()) {
@@ -74,6 +84,7 @@ export default class Inventory {
 
     addNewItem(item, quantity) {
         if (this.isFull()) {
+            this.floor.addItem(item, quantity);
             return;
         }
 
@@ -81,67 +92,5 @@ export default class Inventory {
             item: item,
             quantity: quantity,
         });
-    }
-
-    saddItem(item, quantity = 5, log = true) {
-        if (item.canStack()) {
-            let index = this.getIndexOfItem(item.getIdentifier());
-            if (index !== -1) {
-                if (log) {
-                    this.logger.blue(`Otained ${quantity} ${item.getName()}(s)`);
-                }
-
-                this.items[index].quantity += quantity;
-                let max = item.getStackSize();
-                if (this.items[index].quantity > max) {
-                    let diff = this.items[index].quantity - max;
-                    this.items[index].quantity = max;
-                    this.addItem(item, diff, false);
-                }
-
-                return true;
-            }
-
-            if (quantity > item.getStackSize()) {
-                while (quantity > 0) {
-                    if (quantity > item.getStackSize()) {
-                        this.addItem(item, item.getStackSize(), false);
-                        quantity -= item.getStackSize();
-                        continue;
-                    }
-
-                    this.addItem(item, quantity, false);
-                }
-
-                return true;
-            }
-
-            this.addItem(item, quantity, false);
-            return;
-        }
-
-        if (this.isFull()) {
-            this.logger.red("Inventory full!");
-            return false;
-        }
-
-        if (quantity > 1) {
-            for (let x = 1; x < quantity; x++) {
-                if (!this.addItem(item, 1, false)) {
-                    return true;
-                }
-            }
-        }
-
-        if (log) {
-            this.logger.blue(`Otained ${quantity} ${item.getName()}(s)`);
-        }
-
-        this.items.push({
-            item: item,
-            quantity: quantity,
-        });
-
-        return true;
     }
 };

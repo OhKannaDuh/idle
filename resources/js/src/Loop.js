@@ -17,14 +17,14 @@ export default class Loop {
         return this.currentTick;
     }
 
-    tick(activity, location, player, logger) {
+    tick(activity, location, player, logger, app) {
         if (activity === null) {
             return;
         }
 
         this.currentTick++;
         if (this.currentTick >= activity.ticks) {
-            activity.tick(player, logger);
+            activity.tick(player, logger, app);
             location.tick(player);
             this.reset();
         }

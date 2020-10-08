@@ -13,9 +13,18 @@ body {
 
 .v-application {
     @import "generic";
+    @import "text-color";
     @import "drawer";
     @import "logs";
     @import "map";
     @import "skills";
     @import "progress-bar";
+
+    #lower-right-section {
+        overflow-y: hidden;
+        #lower-right-section-content{
+            height: calc(100% - 36px);
+            overflow-y: scroll;
+        }
+    }
 }

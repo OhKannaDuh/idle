@@ -8,8 +8,8 @@ export default class Activity {
         this.requirements = [];
     }
 
-    tick(player, logger) {
-        this.action(player, logger, this);
+    tick(player, logger, app) {
+        this.action(player, logger, app);
     }
 
     getTicks() {
