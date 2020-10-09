@@ -1,10 +1,11 @@
 class Item {
-    constructor(identifier, name, value, stackSize = 1, floorStackSize = 500) {
+    constructor(identifier, name, value, stackSize = 1, floorStackSize = 500, customOptions = []) {
         this.identifier = identifier;
         this.name = name;
         this.value = value;
         this.stackSize = stackSize;
         this.floorStackSize = floorStackSize;
+        this.customOptions = customOptions;
     }
 
     getIdentifier() {
@@ -30,6 +31,14 @@ class Item {
     getFloorStackSize() {
         return this.floorStackSize;
     }
+
+    getSellPrice() {
+        return Math.round(this.value / 4);
+    }
+
+    getCustomOptions() {
+        return this.customOptions;
+    }
 }
 
 let items = {
@@ -42,10 +51,25 @@ for (let index in logs) {
     items[log.identifier] = new Item(log.identifier, log.name, log.value, log.stackSize ?? 1, log.floorStackSize ?? 500);
 }
 
-export default items;
+import hatchets from "./items/hatchets";
+for (let index in hatchets) {
+    let hatchet = hatchets[index];
+    items[hatchet.identifier] = new Item(hatchet.identifier, hatchet.name, hatchet.value, hatchet.stackSize ?? 1, hatchet.floorStackSize ?? 20, [
+        {
+            text: "Add To Toolbelt",
+            action: function(item, index, player) {
+                let toolbelt = player.getToolbelt();
+                let hatchet = toolbelt.getHatchets()[item.getIdentifier()];
+                let currentHatchet = toolbelt.getHatchet();
+                if (currentHatchet.getBonus() >= hatchet.getBonus()) {
+                    return;
+                }
 
-// export default {
-//     coin: new Item("coin", "Coin", 1),
-//     log: new Item("log", "Log", 4),
-//     oakLog: new Item("oakLog", "Oak Log", 20),
-// };
+                toolbelt.setHatchet(hatchet);
+                player.getInventory().items.splice(index, 1);
+           }
+        },
+    ]);
+}
+
+export default items;

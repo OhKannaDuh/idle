@@ -17,14 +17,19 @@
                         <v-list-item @click="player.bankItem(item, bank);player.getInventory().items.splice(identifier, 1)">
                             <v-list-item-title>Bank</v-list-item-title>
                         </v-list-item>
-                        <v-list-item @click="player.addCoins(item.item.getValue() * item.quantity);player.getInventory().items.splice(identifier, 1)">
+                        <v-list-item @click="player.addCoins(item.item.getSellPrice() * item.quantity);player.getInventory().items.splice(identifier, 1)">
                             <v-list-item-title>
-                                Sell <span v-if="item.quantity > 1">all</span>
+                                Sell <span v-if="item.quantity > 1">all</span> ({{ item.item.getSellPrice() * item.quantity }})
                             </v-list-item-title>
                         </v-list-item>
-                        <v-list-item v-if="item.quantity > 1" @click="player.addCoins(item.item.getValue());player.getInventory().items[identifier].quantity--">
-                            <v-list-item-title>Sell one</v-list-item-title>
+                        <v-list-item v-if="item.quantity > 1" @click="player.addCoins(item.item.getSellPrice());player.getInventory().items[identifier].quantity--">
+                            <v-list-item-title>Sell one ({{ item.item.getSellPrice() }})</v-list-item-title>
                         </v-list-item>
+
+                        <v-list-item v-for="(option,optionIndex) in item.item.getCustomOptions()" :key="optionIndex" @click="option.action(item.item, identifier, player)">
+                            <v-list-item-title v-text="option.text"></v-list-item-title>
+                        </v-list-item>
+
                         <v-list-item @click="player.getInventory().items.splice(identifier, 1)">
                             <v-list-item-title>Destroy</v-list-item-title>
                         </v-list-item>

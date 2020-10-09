@@ -9,7 +9,6 @@ export default class WoodcuttingActivity extends Activity {
             if (_.random(1, 100) >= 100 - (chance + bonus)) {
                 player.addXp("woodcutting", this.experience);
                 player.addItem(this.item);
-                player.addItem(window.items.coin, 26);
             }
 
             logger.red(`Nothing gained (chance ${chance + bonus}%)`);

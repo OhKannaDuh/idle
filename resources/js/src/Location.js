@@ -2,6 +2,7 @@ export default class Location {
     constructor(name) {
         this.name = name;
         this.activities = [];
+        this.shops = [];
     }
 
     addActivity(activity) {
@@ -10,6 +11,14 @@ export default class Location {
 
     getActivities() {
         return this.activities;
+    }
+
+    addShop(shop) {
+        this.shops.push(shop);
+    }
+
+    getShops() {
+        return this.shops;
     }
 
     tick(player) {

@@ -1,6 +1,6 @@
 export default class Purse {
     constructor() {
-        this.coins = 0;
+        this.coins = 500;
     }
 
     addCoins(quantity) {
@@ -9,5 +9,9 @@ export default class Purse {
 
     getCoins() {
         return this.coins;
+    }
+
+    takeCoins(quantity) {
+        this.coins = Math.max(0, this.coins -= quantity);
     }
 }

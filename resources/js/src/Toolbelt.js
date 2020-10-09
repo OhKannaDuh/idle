@@ -1,6 +1,13 @@
+import hatchets from "./tools/hatchets";
+
 export default class Toolbelt {
     constructor() {
-        this.hatchet = require("./tools/hatchets").default.bronze;
+        this.hatchets = hatchets;
+        this.hatchet = hatchets.bronzeHatchet;
+    }
+
+    getHatchets() {
+        return this.hatchets;
     }
 
     setHatchet(hatchet) {

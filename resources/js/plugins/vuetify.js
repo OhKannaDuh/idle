@@ -9,6 +9,7 @@ import Vuetify, {
     VBtn,
     VCard,
     VCardActions,
+    VCardSubtitle,
     VCardText,
     VCardTitle,
     VCol,
@@ -16,6 +17,10 @@ import Vuetify, {
     VDataTable,
     VDatePicker,
     VDialog,
+    VExpansionPanel,
+    VExpansionPanelContent,
+    VExpansionPanelHeader,
+    VExpansionPanels,
     VFooter,
     VForm,
     VIcon,
@@ -45,7 +50,6 @@ import Vuetify, {
     VToolbar,
     VToolbarItems,
     VToolbarTitle,
-    VCardSubtitle,
 } from 'vuetify/lib'
 
 Vue.use(Vuetify, {
@@ -57,6 +61,7 @@ Vue.use(Vuetify, {
         VBtn,
         VCard,
         VCardActions,
+        VCardSubtitle,
         VCardText,
         VCardTitle,
         VCol,
@@ -64,6 +69,10 @@ Vue.use(Vuetify, {
         VDataTable,
         VDatePicker,
         VDialog,
+        VExpansionPanel,
+        VExpansionPanelContent,
+        VExpansionPanelHeader,
+        VExpansionPanels,
         VFooter,
         VForm,
         VIcon,
@@ -93,7 +102,6 @@ Vue.use(Vuetify, {
         VToolbar,
         VToolbarItems,
         VToolbarTitle,
-        VCardSubtitle,
     }
 });
 

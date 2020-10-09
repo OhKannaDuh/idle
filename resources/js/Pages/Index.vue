@@ -33,9 +33,9 @@
                             <log :logs="logs"></log>
                         </v-col>
                         <v-col cols="6">
-                            <v-container ma-0 pa-0 fluid fill-height>
+                            <v-container ma-0 pa-0 fluid fill-height style="max-height:250px;">
                                 <v-row no-gutters class="fill-height">
-                                    <v-col class="flex-grow-0 d-flex" style="flex-direction:column">
+                                    <v-col class="flex-grow-0 d-flex" style="flex-direction:column;">
                                         <v-btn tile depressed block class="flex-grow-1" data-tippy-content="Shop" @click="tab2 = 'shop'">
                                             <v-icon>mdi-basket</v-icon>
                                         </v-btn>
@@ -43,8 +43,26 @@
                                             <v-icon>mdi-purse</v-icon>
                                         </v-btn>
                                     </v-col>
-                                    <v-col class="flex-grow-1 pa-2" :class="{hidden: tab2 != 'shop'}">
-                                        Shop
+                                    <v-col class="flex-grow-1" :class="{hidden: tab2 != 'shop'}" style="max-height:250px;overflow-y:scroll">
+                                        <v-expansion-panels accordion flat>
+                                            <v-expansion-panel v-for="(shop,index) in locations[location].getShops()" :key="index">
+                                                <v-expansion-panel-header v-text="shop.name"></v-expansion-panel-header>
+                                                <v-expansion-panel-content color="#1E2B33">
+                                                    <v-row dense>
+                                                        <v-col cols="4" v-for="(item,index) in shop.stock" :key="index">
+                                                            <v-card>
+                                                                <v-card-title v-text="item.getName()"></v-card-title>
+                                                                <v-card-subtitle v-text="item.getValue()"></v-card-subtitle>
+                                                                <v-card-actions>
+                                                                    <v-spacer></v-spacer>
+                                                                    <v-btn @click="player.getPurse().takeCoins(item.getValue());player.addItem(item)" :disabled="player.getPurse().getCoins() < item.getValue()">Buy</v-btn>
+                                                                </v-card-actions>
+                                                            </v-card>
+                                                        </v-col>
+                                                    </v-row>
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                        </v-expansion-panels>
                                     </v-col>
                                     <v-col class="flex-grow-1" :class="{hidden: tab2 !== 'floor'}" style="max-height:250px">
                                         <v-list style="overflow-y: scroll" height="100%">
@@ -60,15 +78,13 @@
                                                             }"></v-list-item-subtitle>
                                                         </v-col>
                                                         <v-col class="flex-grow-0">
-                                                            <v-btn depressed tile @click="floor.bankItem(index, bank)" data-tippy-content="Bank Inventory" class="ml-2">
-                                                                <v-icon>mdi-arrow-right-bold</v-icon>
-                                                            </v-btn>
+                                                            <v-btn depressed tile @click="floor.bankItem(index, bank)">Bank all</v-btn>
                                                         </v-col>
                                                         <v-col class="flex-grow-0">
-                                                            <v-btn @click="floor.takeItem(stack.item, stack.quantity, player)">Take all</v-btn>
+                                                            <v-btn depressed tile @click="floor.takeItem(stack.item, stack.quantity, player)">Take all</v-btn>
                                                         </v-col>
                                                         <v-col class="flex-grow-0">
-                                                            <v-btn @click="floor.takeItem(stack.item, 1, player)">Take one</v-btn>
+                                                            <v-btn depressed tile @click="floor.takeItem(stack.item, 1, player)">Take one</v-btn>
                                                         </v-col>
                                                     </v-row>
                                                 </v-list-item-content>
@@ -113,6 +129,7 @@
                     <v-row no-gutters id="lower-right-section-content" class="flex-grow-1">
                         <skills :player="player" :visible="tab === 'skills'"></skills>
                         <inventory :player="player" :visible="tab === 'inventory'" :bank="bank"></inventory>
+                        <toolbelt :player="player" :visible="tab === 'toolbelt'"></toolbelt>
                     </v-row>
                 </v-container>
             </v-card>
