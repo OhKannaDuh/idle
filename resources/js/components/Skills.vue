@@ -18,13 +18,18 @@
         </v-row>
         <v-row class="mt-4" dense>
             <v-col cols="3">
-                <v-card class="skill text-center" tile flat data-tippy-content="Total Xp">
-                    <v-card-text v-text="player.getTotalXp()"></v-card-text>
+                <v-card class="skill text-center" tile flat data-tippy-content="Total Level">
+                    <v-card-text v-text="player.getTotalLevel()"></v-card-text>
                 </v-card>
             </v-col>
             <v-col cols="3">
-                <v-card class="skill text-center" tile flat data-tippy-content="Total Level">
-                    <v-card-text v-text="player.getTotalLevel()"></v-card-text>
+                <v-card class="skill text-center" tile flat data-tippy-content="Maxed skills">
+                    <v-card-text v-text="player.getMaxedSkills()"></v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="6">
+                <v-card class="skill text-center" tile flat data-tippy-content="Total Xp">
+                    <v-card-text v-text="player.getTotalXp()"></v-card-text>
                 </v-card>
             </v-col>
         </v-row>

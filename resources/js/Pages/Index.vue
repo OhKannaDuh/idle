@@ -60,6 +60,11 @@
                                                             }"></v-list-item-subtitle>
                                                         </v-col>
                                                         <v-col class="flex-grow-0">
+                                                            <v-btn depressed tile @click="floor.bankItem(index, bank)" data-tippy-content="Bank Inventory" class="ml-2">
+                                                                <v-icon>mdi-arrow-right-bold</v-icon>
+                                                            </v-btn>
+                                                        </v-col>
+                                                        <v-col class="flex-grow-0">
                                                             <v-btn @click="floor.takeItem(stack.item, stack.quantity, player)">Take all</v-btn>
                                                         </v-col>
                                                         <v-col class="flex-grow-0">

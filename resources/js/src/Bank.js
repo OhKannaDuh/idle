@@ -1,10 +1,6 @@
 export default class Bank {
     constructor() {
         this.items = [];
-
-        this.addItem(window.items.yewLogs, 209);
-        this.addItem(window.items.oakLogs, 435);
-        this.addItem(window.items.magicLogs, 2345234);
     }
 
     getItems() {

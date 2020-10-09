@@ -54,4 +54,10 @@ export default class Floor {
 
         inventory.addItem(item, quantity);
     }
-};
+
+    bankItem(index, bank) {
+        let stack = this.items[index];
+        bank.addItem(stack.item, stack.quantity);
+        this.items.splice(index, 1);
+    }
+}

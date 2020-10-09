@@ -48,6 +48,10 @@ export default class Player {
         this.inventory.addItem(item, quantity);
     }
 
+    addCoins(quantity) {
+        this.addItem(window.items.coin, quantity);
+    }
+
     getTotalXp() {
         let xp = 0;
         for (let index in this.skills) {
@@ -66,6 +70,17 @@ export default class Player {
         return level;
     }
 
+    getMaxedSkills() {
+        let skills = 0;
+        for (let index in this.skills) {
+            if (this.skills[index].level >= 99) {
+                skills++;
+            }
+        }
+
+        return skills;
+    }
+
     getPurse() {
         return this.purse;
     }
@@ -77,5 +92,9 @@ export default class Player {
         }
 
         this.inventory.clear();
+    }
+
+    bankItem(item, bank) {
+        bank.addItem(item.item, item.quantity);
     }
 };

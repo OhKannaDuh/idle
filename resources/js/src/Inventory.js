@@ -82,7 +82,7 @@ export default class Inventory {
         }
     }
 
-    addNewItem(item, quantity) {
+    addNewItem(item, quantity = 1) {
         if (this.isFull()) {
             this.floor.addItem(item, quantity);
             return;
